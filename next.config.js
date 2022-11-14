@@ -2,6 +2,18 @@
 const nextConfig = {
   reactStrictMode: true,
   swcMinify: true,
-}
+  rewrites: async () => {
+    return [
+      {
+        source: 'http://localhost:3000/api/items',
+        destination: 'http://localhost:8000/items',
+      },
+      {
+        source: '/api/items/:slug',
+        destination: 'http://localhost:8000/items/:slug',
+      },
+    ];
+  },
+};
 
-module.exports = nextConfig
+module.exports = nextConfig;
